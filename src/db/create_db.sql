@@ -19,7 +19,7 @@ CREATE UNIQUE INDEX idx_user ON cx_user (login);
 
 -- Address
 DROP TABLE IF EXISTS cx_address;
-CREATE TABLE cx_address {
+CREATE TABLE cx_address (
 	user_id         INT NOT NULL,
 	address_type    CHAR(1) NOT NULL,   -- '1' for business, '2' for private
 	street          VARCHAR(255),
@@ -36,5 +36,5 @@ CREATE TABLE cx_address {
 	mobile_country  VARCHAR(255),
 	mobile_city     VARCHAR(255),
 	mobile_number   VARCHAR(255)
-}
+);
 ALTER TABLE cx_address ADD PRIMARY KEY (user_id, address_type);

@@ -44,9 +44,9 @@
 		</tr></table>
 
 		<br/>
-		<form method="get" action="address.jsp">
+		<form method="get" action="showaddress">
 			<label class="cx_button" id="change-address">
-				<input type="submit" value="Meine Adresse pflegen"/>
+				<input type="submit" value="Adresse pflegen"/>
 			</label>
 		</form>
 	</div>

@@ -81,7 +81,7 @@ public class AddressManager {
 				stmt.setString(15, address.getMobileCity());
 				stmt.setString(16, address.getMobileNumber());
 				
-				rs = stmt.executeQuery();
+				stmt.executeUpdate();
 			}
 			else {
 				// UPDATE address
@@ -107,7 +107,7 @@ public class AddressManager {
 				stmt.setLong(15, user.getUserId());
 				stmt.setString(16, address.getAddressType());
 
-				rs = stmt.executeQuery();
+				stmt.executeUpdate();
 			}
 		}
 		catch (Exception e) {

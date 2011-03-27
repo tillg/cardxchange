@@ -35,6 +35,10 @@
     	<servlet-name>saveaddress</servlet-name>
     	<servlet-class>com.cx.action.SaveAddress</servlet-class>
   	</servlet>
+  	<servlet>
+    	<servlet-name>showaddress</servlet-name>
+    	<servlet-class>com.cx.action.ShowAddress</servlet-class>
+  	</servlet>
   
     <servlet-mapping>
     	<servlet-name>register</servlet-name>
@@ -46,7 +50,11 @@
   	</servlet-mapping>
     <servlet-mapping>
     	<servlet-name>saveaddress</servlet-name>
-    	<url-pattern>/saveAddress</url-pattern>
+    	<url-pattern>/saveaddress</url-pattern>
+  	</servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>showaddress</servlet-name>
+    	<url-pattern>/showaddress</url-pattern>
   	</servlet-mapping>
   
 </web-app>

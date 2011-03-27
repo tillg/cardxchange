@@ -44,11 +44,21 @@ public class ShowAddress extends HttpServlet {
 			Address privateAddress = addressManager.loadPrivateAddress(user);
 			
 			// put business and private address into request
-			// TODO
+			req.setAttribute("busAddress", busAddress);
+			req.setAttribute("privateAddress", privateAddress);
 		}
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(req, resp);
 	}
 
+
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		doGet(req, resp);
+	}
+
+	
 }

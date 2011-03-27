@@ -18,6 +18,41 @@ public class Address {
 	private String mobileCountry;
 	private String mobileCity;
 	private String mobileNumber;
+	
+	public String getAddressInOneRow() {
+		String address = "";
+		if (street != null) address += street;
+		if (zip != null || city != null || country != null) address += ", "; 
+		if (zip != null) address += zip + " ";
+		if (city != null) address += city;
+		if (country != null) address += ", " + country;
+		if (state != null) address += " (" + state + ")";
+		return address;
+	}
+	
+	public String getTel () {
+		String tel = "";
+		if (telCountry != null) tel += telCountry + "-";
+		if (telCity != null) tel += telCity + "-";
+		if (telNumber != null) tel += telNumber;
+		return tel;
+	}
+	public String getFax () {
+		String fax = "";
+		if (faxCountry != null) fax += faxCountry + "-";
+		if (faxCity != null) fax += faxCity + "-";
+		if (faxNumber != null) fax += faxNumber;
+		return fax;
+	}
+	public String getMobile () {
+		String mobile = "";
+		if (mobileCountry != null) mobile += mobileCountry + "-";
+		if (mobileCity != null) mobile += mobileCity + "-";
+		if (mobileNumber != null) mobile += mobileNumber;
+		return mobile;
+	}
+	
+	
 	public long getUserid() {
 		return userid;
 	}

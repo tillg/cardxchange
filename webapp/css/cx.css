@@ -44,7 +44,7 @@ div#main h1 {margin-top: 10px; font-size: 120%;}
 div#main p { font-size: 80%; }
 
 /*** Buttons ***/
-div#business_edit div.button_line .cx_button input{ margin : 0; }
+div#business_edit div.button_line .cx_button input, div#private_edit div.button_line .cx_button input{ margin : 0; }
 div.button_line .cx_button { margin: 2px 5px 8px 5px; }
 .cx_button {
 	border: 1px grey solid;
@@ -147,16 +147,16 @@ div#statusbar {
 .col_addressdetail { width: 160px; }
 .col_addresscontent { width: 380px; }
 
-div#business_view {display: block; }
+div#business_view, div#private_view {display: block; }
 
-div#business_edit {
+div#business_edit, div#private_edit {
 	display: none;
 	margin: 5px;
 	border: 1px solid grey;
 	width: 800px;
 	background-color: lightgrey; /** #E6F0F0; **/
 }
-div#business_edit h3 {
+div#business_edit h3, div#private_edit h3 {
 	background-color: #4A4A95;
 	color: white;
 	padding: 5px;
@@ -169,5 +169,5 @@ select#bus_state { width: 290px; }
 div#main .tel_country input, div#main .tel_city input { width: 120px; }
 div#main .tel_number input { width: 200px; }
 
-div#business_edit span { font-size: 80%; }
-div#business_edit input, div#business_edit select {margin-right: 5px; margin-bottom: 8px; }
+div#business_edit span, div#private_edit span { font-size: 80%; }
+div#business_edit input, div#business_edit select, div#private_edit input, div#private_edit select {margin-right: 5px; margin-bottom: 8px; }

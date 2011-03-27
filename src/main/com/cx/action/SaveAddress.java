@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.cx.AddressManager;
 import com.cx.model.Address;
 import com.cx.model.User;
+import com.cx.util.StringUtil;
 
 public class SaveAddress extends HttpServlet{
 
@@ -23,7 +24,7 @@ public class SaveAddress extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		String nextJSP = "/address.jsp";
+		String nextJSP = "/showaddress";
 		String errText = null;
 
 		// get the logged in User from the session
@@ -35,21 +36,21 @@ public class SaveAddress extends HttpServlet{
 			nextJSP = "/index.jsp";
 		}
 		
-		String addressType = req.getParameter("addressType");
-		String street = req.getParameter("street");
-		String zip = req.getParameter("zip");
-		String city = req.getParameter("city");
-		String country = req.getParameter("country");
-		String state = req.getParameter("state");
-		String telCountry = req.getParameter("tel_country");
-		String telCity = req.getParameter("tel_city");
-		String telNumber = req.getParameter("tel_number");
-		String faxCountry = req.getParameter("fax_country");
-		String faxCity = req.getParameter("fax_city");
-		String faxNumber = req.getParameter("fax_number");
-		String mobileCountry = req.getParameter("mobile_country");
-		String mobileCity = req.getParameter("mobile_city");
-		String mobileNumber = req.getParameter("mobile_number");
+		String addressType = StringUtil.utf8Convert(req.getParameter("addressType"));
+		String street = StringUtil.utf8Convert(req.getParameter("street"));
+		String zip = StringUtil.utf8Convert(req.getParameter("zip"));
+		String city = StringUtil.utf8Convert(req.getParameter("city"));
+		String country = StringUtil.utf8Convert(req.getParameter("country"));
+		String state = StringUtil.utf8Convert(req.getParameter("state"));
+		String telCountry = StringUtil.utf8Convert(req.getParameter("tel_country"));
+		String telCity = StringUtil.utf8Convert(req.getParameter("tel_city"));
+		String telNumber = StringUtil.utf8Convert(req.getParameter("tel_number"));
+		String faxCountry = StringUtil.utf8Convert(req.getParameter("fax_country"));
+		String faxCity = StringUtil.utf8Convert(req.getParameter("fax_city"));
+		String faxNumber = StringUtil.utf8Convert(req.getParameter("fax_number"));
+		String mobileCountry = StringUtil.utf8Convert(req.getParameter("mobile_country"));
+		String mobileCity = StringUtil.utf8Convert(req.getParameter("mobile_city"));
+		String mobileNumber = StringUtil.utf8Convert(req.getParameter("mobile_number"));
 		
 		AddressManager addressManager = AddressManager.getInstance();
 		
