@@ -388,6 +388,14 @@
 		</form>
 	</div>
 
+		<br/>
+		<br/>
+		<form method="get" action="confirmaddress">
+			<label class="cx_button special_button" id="confirm-address">
+				<input type="submit" value="Daten bestätigen"/>
+			</label>
+		</form>
+
 		
 	</div>
 </div>

@@ -14,6 +14,7 @@ CREATE TABLE cx_user (
 	last_login    DATETIME,
 	active        CHAR(1) NOT NULL DEFAULT 'A'
 );
+ALTER TABLE cx_user ADD COLUMN last_confirm DATETIME;
 
 CREATE UNIQUE INDEX idx_user ON cx_user (login);
 

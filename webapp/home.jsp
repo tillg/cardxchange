@@ -37,7 +37,9 @@
 	<div class="cx-home-block">
 		<br/>
 		<h2>Qualität Ihrer Adresse</h2>
-		<div id="statusbar"></div>
+		<div id="statusbar">
+			<span id="statusmarker" style="right: 50px;">X</span>
+		</div>
 		<table width="968px"><tr>
 			<td><span>sehr lange nicht bestätigt</span></td>
 			<td style="text-align: right;"><span>aktuell bestätigt</span></td>

@@ -196,6 +196,27 @@ public class UserManager {
 	}
 
 
+	public void confirmData(User user) {
+
+		// 
+		Connection con = null;
+		try {
+			con = ConnectionPool.getInstance().getConnection();
+			String sql = "UPDATE cx_user SET last_confirm = sysdate() WHERE user_id = ?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+
+			stmt.setLong(1, user.getUserId());
+
+			stmt.executeUpdate();
+		}
+		catch (Exception e) {
+			log.error("UserManager.confirmData(): ", e);
+		}
+		finally {
+			ConnectionPool.getInstance().returnConnection(con);
+		}
+	}
+	
 	// ---------------- end of public methods ----------------
 	
 	

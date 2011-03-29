@@ -97,11 +97,17 @@ label.special_button:active {
     border-buttom-color: #3B6E22;
 }
 
-/*** Status bar grafic ***/
+/*** Status bar graphic ***/
 div#statusbar { 
 	background-image: url(../imgs/statusbar.png); 
 	width: 968px;
 	height: 43px;
+	position: relative;  /* base for marker */
+}
+#statusmarker {
+	position: absolute;
+	top:5px;
+	right: 5px;
 }
 
 /*** Home page ***/
