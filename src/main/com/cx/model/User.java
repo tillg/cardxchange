@@ -11,6 +11,9 @@ public class User {
 	private String pwd;
 	private String primaryEmail;
 	private Date lastLogin;
+	private Date lastConfirm;
+	
+	
 	public long getUserId() {
 		return userId;
 	}
@@ -52,6 +55,12 @@ public class User {
 	}
 	public void setLastLogin(Date lastLogin) {
 		this.lastLogin = lastLogin;
+	}
+	public Date getLastConfirm() {
+		return lastConfirm;
+	}
+	public void setLastConfirm(Date lastConfirm) {
+		this.lastConfirm = lastConfirm;
 	}
 	
 	

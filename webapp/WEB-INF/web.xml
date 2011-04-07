@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>cardxchange</display-name>
-  
+
+<!-- Vossi DEV Environment  -->
    	<context-param>
     	<param-name>DB_URL</param-name>
     	<param-value>jdbc:mysql://localhost:3306/cx</param-value>
@@ -13,6 +14,38 @@
   	<context-param>
     	<param-name>DB_PASSWORD</param-name>
     	<param-value>cuebid</param-value>
+  	</context-param>
+<!-- TEST Environment -->
+<!-- 
+   	<context-param>
+    	<param-name>DB_URL</param-name>
+    	<param-value>jdbc:mysql://inet00.de/usr_web1312_1</param-value>
+  	</context-param>
+  	<context-param>
+    	<param-name>DB_USER</param-name>
+    	<param-value>web1312</param-value>
+  	</context-param>
+  	<context-param>
+    	<param-name>DB_PASSWORD</param-name>
+    	<param-value>XG8PTPiz</param-value>
+  	</context-param>
+-->
+
+   	<context-param>
+    	<param-name>MAIL.HOSTNAME</param-name>
+    	<param-value>mail.inetmx.de</param-value>
+  	</context-param>
+  	<context-param>
+    	<param-name>REG.CONFIRM_URL</param-name>
+    	<param-value>http://web1312.inetseite.de/cx/EmailRegistration</param-value>
+  	</context-param>
+  	<context-param>
+    	<param-name>MAIL.FROM</param-name>
+    	<param-value>vossi.voss@gmail.com</param-value>
+  	</context-param>
+  	<context-param>
+    	<param-name>MAIL.BOUNCEADDRESS</param-name>
+    	<param-value>vossi.voss@gmail.com</param-value>
   	</context-param>
   
    	<listener>
@@ -43,6 +76,14 @@
     	<servlet-name>confirmaddress</servlet-name>
     	<servlet-class>com.cx.action.ConfirmAddress</servlet-class>
   	</servlet>
+  	<servlet>
+    	<servlet-name>home</servlet-name>
+    	<servlet-class>com.cx.action.ShowHome</servlet-class>
+  	</servlet>
+  	<servlet>
+    	<servlet-name>emailregistration</servlet-name>
+    	<servlet-class>com.cx.action.EmailRegistration</servlet-class>
+  	</servlet>
   
     <servlet-mapping>
     	<servlet-name>register</servlet-name>
@@ -63,6 +104,14 @@
     <servlet-mapping>
     	<servlet-name>confirmaddress</servlet-name>
     	<url-pattern>/confirmaddress</url-pattern>
+  	</servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>home</servlet-name>
+    	<url-pattern>/home</url-pattern>
+  	</servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>emailregistration</servlet-name>
+    	<url-pattern>/EmailRegistration</url-pattern>
   	</servlet-mapping>
   
 </web-app>

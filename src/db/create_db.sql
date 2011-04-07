@@ -39,3 +39,16 @@ CREATE TABLE cx_address (
 	mobile_number   VARCHAR(255)
 );
 ALTER TABLE cx_address ADD PRIMARY KEY (user_id, address_type);
+
+-- Emails
+DROP TABLE IF EXISTS cx_email;
+CREATE TABLE cx_email (
+	user_id         INT NOT NULL,
+	email_type		VARCHAR(255) NOT NULL,  -- 'BUSINESS', 'PRIVATE'
+	email			VARCHAR(255) NOT NULL,
+	activated		BOOLEAN NOT NULL DEFAULT FALSE
+);
+ALTER TABLE cx_email ADD PRIMARY KEY (user_id, email_type);
+CREATE UNIQUE INDEX idx_email ON cx_email (email);
+ALTER TABLE cx_email ADD COLUMN hash_code INT;
+ALTER TABLE cx_email ADD COLUMN activation_time DATETIME;

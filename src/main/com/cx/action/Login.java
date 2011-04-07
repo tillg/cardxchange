@@ -23,7 +23,7 @@ public class Login extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-		String nextJSP = "/home.jsp";
+		String nextJSP = "/home";
 		
 		String login = req.getParameter("cx_login");
 		String pwd = req.getParameter("cx_pwd");

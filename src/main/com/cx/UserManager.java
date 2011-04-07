@@ -4,11 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Calendar;
+import java.util.Date;
 
 import org.apache.log4j.Logger;
 
+import com.cx.model.Email;
 import com.cx.model.User;
 import com.cx.util.ConnectionPool;
+import com.cx.util.StringUtil;
 
 public class UserManager {
 
@@ -37,7 +40,7 @@ public class UserManager {
 		try {
 			// get a database connection
 			con = ConnectionPool.getInstance().getConnection();
-			String sql = "SELECT user_id, firstname, lastname, login, pwd, primary_email, last_login FROM cx_user WHERE active='A' AND login = ?";
+			String sql = "SELECT user_id, firstname, lastname, login, pwd, primary_email, last_login, last_confirm FROM cx_user WHERE active='A' AND login = ?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, userLogin);
 			ResultSet rs = stmt.executeQuery();
@@ -51,6 +54,7 @@ public class UserManager {
 				loadedUser.setPwd(rs.getString("pwd"));
 				loadedUser.setPrimaryEmail(rs.getString("primary_email"));
 				loadedUser.setLastLogin(rs.getDate("last_login"));
+				loadedUser.setLastConfirm(rs.getDate("last_confirm"));
 			}
 			else {
 				// no matching user found
@@ -69,7 +73,6 @@ public class UserManager {
 	
 	
 	public User registerUser (User newUser) {
-		User registeredUser = null;
 
 		// Validation: we need a User to save
 		if (null == newUser) {
@@ -109,8 +112,17 @@ public class UserManager {
 			ConnectionPool.getInstance().returnConnection(con);
 		}
 		
+		// and also save the email
+		Email newEmail = new Email();
+		newEmail.setUserId(newUser.getUserId());
+		newEmail.setEmailType(EmailManager.TYPE_BUSINESS);
+		newEmail.setEmail(newUser.getPrimaryEmail());
+		newEmail.setActivated(false);
+		newEmail.setHashCode(StringUtil.getHashCode(newEmail.getEmail()));
+		EmailManager.getInstance().createEmail(newUser, newEmail);
+		
 		// return saved User (now with userId)
-		return registeredUser;
+		return newUser;
 	}
 	
 	public User updateUserLastLogin (User user) {
@@ -196,9 +208,10 @@ public class UserManager {
 	}
 
 
-	public void confirmData(User user) {
+	public User confirmData(User user) {
 
-		// 
+		user.setLastConfirm(new Date());
+		
 		Connection con = null;
 		try {
 			con = ConnectionPool.getInstance().getConnection();
@@ -215,6 +228,32 @@ public class UserManager {
 		finally {
 			ConnectionPool.getInstance().returnConnection(con);
 		}
+		return user;
+	}
+	
+	public long getConfirmPos(User user, long statusWidth) {
+		if (user == null) {
+			return 0;
+		}
+		
+		long ret = statusWidth;
+		long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000;
+		long ageInDays = 1;
+		
+		if (user.getLastConfirm() != null) { 
+			ageInDays = ((new Date()).getTime() - user.getLastConfirm().getTime()) / MILLSECS_PER_DAY;
+		}
+		if (ageInDays <= 30) {
+			ret = new Double(ageInDays / 30.0 * statusWidth / 2.0).longValue();
+		}
+		else {
+			ret = new Double(statusWidth / 2.0 + (ageInDays - 30.0)/335.0 * statusWidth / 2.0).longValue(); 
+		}
+		if (ret > statusWidth) ret = statusWidth;
+		
+		log.debug("Staus age in days: " + ageInDays + " Status bar right position: " + ret);
+			
+		return ret;
 	}
 	
 	// ---------------- end of public methods ----------------

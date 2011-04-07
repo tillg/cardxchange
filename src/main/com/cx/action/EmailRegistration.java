@@ -7,33 +7,35 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.cx.UserManager;
-import com.cx.model.User;
+import org.apache.log4j.Logger;
 
-public class ConfirmAddress extends HttpServlet {
+import com.cx.EmailManager;
+
+public class EmailRegistration extends HttpServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	private static Logger log = Logger.getLogger(EmailRegistration.class);
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		String nextJSP = "/home";
-
-		// get the logged in User from the session
-		HttpSession session = ((HttpServletRequest)req).getSession();
-		User user = (User)session.getAttribute("cx.user");
-		
-		if (user != null) {
-			// Set confirmation date to current date for the user
-			user = UserManager.getInstance().confirmData(user);
-			session.setAttribute("cx.user", user);
+		EmailManager emailManager = EmailManager.getInstance(); 
+		String codeStr = req.getParameter("code");
+		int code = 0;
+		try {
+			code = Integer.parseInt(codeStr);
+			emailManager.emailRegistration(code);
 		}
-
+		catch (Exception e) {
+			log.error("EmailRegistration called with code: " + codeStr);
+		}
+		
+		
+		String nextJSP = "/emailregistered.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(req, resp);
 	}

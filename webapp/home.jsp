@@ -38,7 +38,9 @@
 		<br/>
 		<h2>Qualität Ihrer Adresse</h2>
 		<div id="statusbar">
-			<span id="statusmarker" style="right: 50px;">X</span>
+		
+			<!-- TODO: the marker should be replaced by a nice png or gif animation. -->
+			<span id="statusmarker" style="right: ${posConfirmation}px;">X</span>
 		</div>
 		<table width="968px"><tr>
 			<td><span>sehr lange nicht bestätigt</span></td>

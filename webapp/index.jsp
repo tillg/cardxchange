@@ -1,4 +1,3 @@
-<%@page import="com.cx.UserManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -68,7 +67,7 @@
 		<c:otherwise>		
 					<div class="cx_counter">
 						<span class="digit">
-							<span class="number"><c:out value="${countChar}" /></span>
+							<span class="number">${countChar}</span>
 							<span class="line"></span>
 						</span>
 					</div>

@@ -32,4 +32,8 @@ public class StringUtil {
 		catch (Exception e) {}
 		return result;
 	}
+	
+	public static final int getHashCode (String token) {
+		return ("Till+Vossi" + token).hashCode();
+	}
 }

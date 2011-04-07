@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.cx.UserManager;
 import com.cx.model.User;
 
-public class ConfirmAddress extends HttpServlet {
+public class ShowHome extends HttpServlet {
 
 	/**
 	 * 
@@ -22,22 +22,29 @@ public class ConfirmAddress extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		String nextJSP = "/home";
+		String nextJSP = "/home.jsp";
 
-		// get the logged in User from the session
+		// get user from session
 		HttpSession session = ((HttpServletRequest)req).getSession();
 		User user = (User)session.getAttribute("cx.user");
-		
-		if (user != null) {
-			// Set confirmation date to current date for the user
-			user = UserManager.getInstance().confirmData(user);
-			session.setAttribute("cx.user", user);
-		}
 
+		if (user == null) {
+			nextJSP = "/index.jsp";
+		}
+		
+		// put position for confirmation status
+		UserManager umgr = UserManager.getInstance();
+		req.setAttribute("posConfirmation", umgr.getConfirmPos(user, 968));
+		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(req, resp);
 	}
-	
-	
 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		doGet(req, resp);
+	}
+
+	
 }
