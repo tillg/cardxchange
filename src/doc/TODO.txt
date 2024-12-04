@@ -1,0 +1,21 @@
+
+TEST - Email von Registrierung muss aktiviert werden per link mit code von email
+- Eingabe von emails in Block wie bei Adressen
+- Karte geben an email adresse
+- Anzeige der Liste der Kontakte
+- Bei Karte geben, eine vcard verschicken
+- Kontakt wegschmeissen
+- Abkürzung zu Karte geben von Kontakten (die noch nicht gegeben sind)
+- Foto angeben zu geschäftlicher Adresse und zu privater Adresse
+- Firmen Logo angeben zu geschäftlicher Adresse 
+- home: Anzeige von Aktivitäten der Kontakte
+- Bei Adressänderung message mit Änderung für Anzeige Aktivitäten
+- PAsswort vergessen Funktionalität
+
+
+DONE - Registrierung vom USer
+DONE - Login vom USer
+DONE - Pflege der Adress Daten in Blöcken wie bei xing
+DONE - Datum letzter check, dass die Daten aktuell sind.   
+DONE 2011-04-01 - Email muss eindeutig in cx sein
+DONE 2011-04-06 - Email von Registrierung muss aktiviert werden per link mit code von email

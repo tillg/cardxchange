@@ -1,0 +1,179 @@
+@charset "UTF-8";
+* { margin:0; padding: 0; }
+* html body * { overflow:visible; }
+html * { font-size: 100.01%; }
+
+
+/*** colors ***/
+.mainbgcolor {background: #4A4A95;} /** facebook blue: #3B5998; **/
+.maincolor, hr {color: #4A4A95;}
+.mainlightcolor {color: #98A9CA;} /** facebook lightblue: #98A9CA; **/
+.error { color: red; }
+
+body {
+    font-family:  Arial, Helvetica, sans-serif;
+    font-size: 100.01%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+div#main-upper-bg {	text-align: center;	margin: 0 auto; }
+
+/*** Content width ***/
+div#header, div#main, div#footer {width: 1024px;}
+
+div#header {
+	color: white;
+	text-align: left;
+	margin: auto;
+	padding:10px 0;
+}
+
+div#header h1 {font-size: 200.01%;}
+div#header a {text-decoration: none;}  
+div#header a:hover {text-decoration: underline;}
+div#header span, div#header input, div#header a {
+	font-size: 80%;
+	margin-right: 5px;
+}
+
+div#main {margin: 0 auto; text-align: left;}
+.cx_label {text-align: right; font-size: 80%;}
+div#main input {margin: 2px 0; font-size: 120%; width: 250px;}
+div#main h1 {margin-top: 10px; font-size: 120%;}
+div#main p { font-size: 80%; }
+
+/*** Buttons ***/
+div#business_edit div.button_line .cx_button input, div#private_edit div.button_line .cx_button input{ margin : 0; }
+div.button_line .cx_button { margin: 2px 5px 8px 5px; }
+.cx_button {
+	border: 1px grey solid;
+	text-align: center;
+	padding: 2px 5px;
+	width: 120px;
+	color: white;
+	font-weight: bold;
+	background: #6AA74F;
+	cursor: pointer;
+}
+label.cx_button, label.cx_button:focus { 
+	vertical-align: middle; 
+	border-color: #999999 #999999 #888888;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    padding: 2px 6px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: top;
+}
+label.cx_button input {
+	color: white;
+	background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    margin: 0;
+    outline: 0;
+    padding: 1px 0 2px;
+}
+div#main label.cx_button input {
+    width: auto;
+    font-size: 80%;
+}
+div#main label.cx_button input:active {text-decoration: none;}
+label.cx_button { background-color: #5B74A8; }
+label.cx_button:active {background-color: #4F6AA3; }
+label.special_button {
+	background-color: #69A74E;
+    border-color: #3B6E22 #3B6E22 #2C5115;
+	padding: 3px 25px 5px;
+}
+label.special_button:active {
+	background-color: #609946;
+    border-buttom-color: #3B6E22;
+}
+
+/*** Status bar graphic ***/
+div#statusbar { 
+	background-image: url(../imgs/statusbar.png); 
+	width: 968px;
+	height: 43px;
+	position: relative;  /* base for marker */
+}
+#statusmarker {
+	position: absolute;
+	top:5px;
+	right: 5px;
+}
+
+/*** Home page ***/
+
+/*** Home page counter ***/
+.digit {
+	background: url("../imgs/digit.png") repeat scroll 0 0 transparent;
+	display: block;
+	float: left;
+	height: 78px;
+	position: relative;
+	width: 52px;
+}
+.number {
+	color: #373737;
+	font-family: "Gotham Condensed","Helvetica Neue","Helvetica","Arial",Sans-Serif;
+	font-size: 52px;
+	font-weight: bold;
+	height: 50px;
+	position: absolute;
+	text-align: center;
+	top: 3px;
+	width: 52px;
+}
+.line {
+	border-bottom: 1px solid #FCFCFC;
+	height: 34px;
+	left: 5px;
+	position: absolute;
+	top: 0;
+	width: 42px;
+}
+.comma {
+	background: url("../imgs/comma.png") no-repeat scroll center bottom transparent;
+	display: block;
+	float: left;
+	height: 80px;
+	width: 6px;
+}
+
+/*** Address page ***/
+.col_addresstype { width: 160px; }
+.col_addressdetail { width: 160px; }
+.col_addresscontent { width: 380px; }
+
+div#business_view, div#private_view {display: block; }
+
+div#business_edit, div#private_edit {
+	display: none;
+	margin: 5px;
+	border: 1px solid grey;
+	width: 800px;
+	background-color: lightgrey; /** #E6F0F0; **/
+}
+div#business_edit h3, div#private_edit h3 {
+	background-color: #4A4A95;
+	color: white;
+	padding: 5px;
+}
+
+div#main .add_streetcol input, select#bus_country { width: 300px; }
+div#main .add_zipcol input { width: 80px; }
+div#main .add_citycol input { width: 190px; }
+select#bus_state { width: 290px; }
+div#main .tel_country input, div#main .tel_city input { width: 120px; }
+div#main .tel_number input { width: 200px; }
+
+div#business_edit span, div#private_edit span { font-size: 80%; }
+div#business_edit input, div#business_edit select, div#private_edit input, div#private_edit select {margin-right: 5px; margin-bottom: 8px; }
